@@ -6,7 +6,8 @@ import Modal from 'react-bootstrap/Modal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faHomeUser,
-  faTriangleExclamation
+  faTriangleExclamation,
+  faClose
 } from '@fortawesome/free-solid-svg-icons'
 import { Grid, Row, Column } from 'components/ui/Grid'
 import './styles.css'
@@ -30,12 +31,26 @@ const Model = ({ cell }) => {
         backdrop="static"
         keyboard={false}
       >
-        <Modal.Header closeButton>
+        <div className="modal-header">
+          <div className="modal-title h4">
+            <FontAwesomeIcon icon={faHomeUser} /> Suspension
+          </div>
+
+          <button
+            type="button"
+            className="btn-close"
+            aria-label="Close"
+            onClick={handleClose}
+          >
+            <FontAwesomeIcon icon={faClose} />
+          </button>
+        </div>
+        {/* <Modal.Header closeButton>
           <Modal.Title>
             {' '}
             <FontAwesomeIcon icon={faHomeUser} /> Suspension
           </Modal.Title>
-        </Modal.Header>
+        </Modal.Header> */}
         <Modal.Body>
           <Row>
             <Column span={3}>
