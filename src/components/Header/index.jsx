@@ -7,18 +7,6 @@ import './header-styles.css'
 const Header = () => {
   return (
     <>
-      <div className="pace  pace-inactive">
-        <div
-          className="pace-progress"
-          data-progress-text="100%"
-          data-progress="99"
-          style={{ transform: 'translate3d(0%, 0px, 0px)' }}
-        >
-          <div className="pace-progress-inner"></div>
-        </div>
-        <div className="pace-activity"></div>
-      </div>
-
       <header id="header">
         <div id="logo-group">
           <span id="logo">
