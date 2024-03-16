@@ -5,6 +5,7 @@ import Dashboard from 'pages/Dashboard'
 import Callback from 'pages/Callback'
 import Register from 'pages/Register'
 import Login from 'pages/Login'
+import ManageFeeDashboard from 'pages/Dashboard/managefee'
 
 const App = () => {
   return (
@@ -14,6 +15,9 @@ const App = () => {
       </Route>
       <ProtectedRoute path="/dashboard" strict exact>
         <Dashboard />
+      </ProtectedRoute>
+      <ProtectedRoute path="/Feedashboard" strict exact>
+        <ManageFeeDashboard />
       </ProtectedRoute>
       <Route path="/signin-oidc" strict exact>
         <Callback />
