@@ -11,8 +11,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { Grid, Row, Column } from 'components/ui/Grid'
 import './styles.css'
+import ManageVariantsTable from 'components/ManageFeeTable/VariantsTable'
 
-const Model = ({ cell }) => {
+const Model = ({ cell, type }) => {
   const [show, setShow] = useState(false)
 
   const handleClose = () => setShow(false)
@@ -33,7 +34,24 @@ const Model = ({ cell }) => {
       >
         <div className="modal-header">
           <div className="modal-title h4">
-            <FontAwesomeIcon icon={faHomeUser} /> Suspension
+            <FontAwesomeIcon icon={faHomeUser} />{' '}
+            {type == 'feetable' ? (
+              <>
+                Variants{' '}
+                <span
+                  style={{
+                    background: '#b4c902',
+                    padding: '5px',
+                    fontSize: '14px',
+                    borderRadius: '5px'
+                  }}
+                >
+                  1022 -USD
+                </span>
+              </>
+            ) : (
+              'Suspension'
+            )}
           </div>
 
           <button
@@ -52,25 +70,33 @@ const Model = ({ cell }) => {
           </Modal.Title>
         </Modal.Header> */}
         <Modal.Body>
-          <Row>
-            <Column span={3}>
-              {' '}
-              <FontAwesomeIcon icon={faTriangleExclamation} />
-            </Column>
-            <Column span={9}>
-              {' '}
-              <h4>Are you sure to suspend the company?</h4>
-              <p>Legal Name : BadgerToll</p>
-              <p>DBA : BGR</p>
-              <p>Email : badgertoll@mail.com</p>
-            </Column>
-          </Row>
+          {type == 'feetable' ? (
+            <Row>
+              <Column span={12}>
+                <ManageVariantsTable />
+              </Column>
+            </Row>
+          ) : (
+            <Row>
+              <Column span={3}>
+                {' '}
+                <FontAwesomeIcon icon={faTriangleExclamation} />
+              </Column>
+              <Column span={9}>
+                {' '}
+                <h4>Are you sure to suspend the company?</h4>
+                <p>Legal Name : BadgerToll</p>
+                <p>DBA : BGR</p>
+                <p>Email : badgertoll@mail.com</p>
+              </Column>
+            </Row>
+          )}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="success">Confirm</Button>
+          {type !== 'feetable' && <Button variant="success">Confirm</Button>}
         </Modal.Footer>
       </Modal>
     </>
